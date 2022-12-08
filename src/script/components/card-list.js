@@ -7,11 +7,11 @@ class CardList extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = '';
+    this.innerHTML = `<div class="justify-center flex flex-wrap gap-7 mt-6" id="${this._cards[0].strDrink ? 'drinkList' : 'mealList'}"></div>`;
     this._cards.forEach((card) => {
       const cardItemElement = document.createElement('card-comp');
       cardItemElement.card = card;
-      this.appendChild(cardItemElement);
+      this.firstElementChild.appendChild(cardItemElement);
     });
   }
 

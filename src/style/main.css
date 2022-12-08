@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active {
+  font-family: 'Montserrat', sans-serif;
+  background: rgb(2, 0, 36);
+  background: transparent;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.active-btn {
+  @apply bg-slate-900 text-white transition-all duration-75
+}
