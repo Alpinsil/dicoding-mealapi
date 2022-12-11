@@ -32,4 +32,19 @@ function mealSearch(keyword) {
     });
 }
 
-export { mealByCategory, mealSearch };
+function mealCategoryList() {
+  axios
+    .get(`${baseUrl}list.php?c=list`)
+    .then((response) => {
+      // handle success
+      // console.log(response.data.meals.slice(0, 12));
+      cardList.cards = response.data.meals.slice(0, 8);
+      root.appendChild(cardList);
+    })
+    .catch((error) => {
+      // handle error
+      console.log(error);
+    });
+}
+
+export { mealByCategory, mealSearch, mealCategoryList };

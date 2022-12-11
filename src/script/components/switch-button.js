@@ -1,8 +1,8 @@
-const buttonList = ['meal', 'drink'];
+const buttonList = ['all', 'Beef', 'Breakfast', 'Chicken', 'Dessert'];
 
 class SwitchButton extends HTMLElement {
   connectedCallback() {
-    this.active = 'meal';
+    this.active = 'all';
     this.render();
   }
 
