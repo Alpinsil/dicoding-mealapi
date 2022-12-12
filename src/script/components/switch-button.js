@@ -1,8 +1,8 @@
-const buttonList = ['all', 'Beef', 'Breakfast', 'Chicken', 'Dessert'];
+const buttonList = ['Beef', 'Breakfast', 'Chicken', 'Dessert', 'Goat'];
 
 class SwitchButton extends HTMLElement {
   connectedCallback() {
-    this.active = 'all';
+    this.active = localStorage.getItem('ActiveBtn') || 'Beef';
     this.render();
   }
 
@@ -16,19 +16,14 @@ class SwitchButton extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = '<div class="flex gap-2 justify-center"></div>';
+    this.innerHTML = '<div class="flex gap-4 justify-center flex-wrap mb-10 w-[300px] mx-auto lg:w-full"></div>';
     const listButton = buttonList.map((btn) => `<button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-3xl ${this.active === btn ? 'active-btn' : 'inactive-btn'}">${btn}</button>`);
-    this.firstElementChild.innerHTML = listButton;
+    this.firstElementChild.innerHTML = listButton.join('');
     this.querySelectorAll('button').forEach((btn) => btn.addEventListener('click', () => {
-      this.active = btn.innerHTML;
-      // if (this.active === 'meal') {
-      //   document.getElementById('drinkList').classList.add('hidden');
-      //   document.getElementById('mealList').classList.remove('hidden');
-      // } else {
-      //   document.getElementById('drinkList').classList.remove('hidden');
-      //   document.getElementById('mealList').classList.add('hidden');
-      // }
+      localStorage.setItem('ActiveBtn', btn.innerHTML);
+      this.active = localStorage.getItem('ActiveBtn');
       this.render();
+      window.location.reload(true);
     }));
   }
 }

@@ -1,10 +1,10 @@
 import { mealByCategory, mealSearch } from '../data/mealAPI';
 
-const MealView = (search) => {
+const MealView = (search, category) => {
   if (search) {
     mealSearch(search);
   }
-  mealByCategory('a', 'Canadian');
+  mealByCategory('c', category);
 };
 
 export default MealView;
